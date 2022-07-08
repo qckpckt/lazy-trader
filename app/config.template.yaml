@@ -1,0 +1,41 @@
+allocation_map:
+  bond:
+    allocation: 10
+    symbols:
+    - currency: ''
+      symbol: ''
+    buy: ''
+  cad_etf:
+    allocation: 30
+    symbols:
+    - currency: ''
+      symbol: ''
+    buy: ''
+  ex_ca_etf:
+    allocation: 20
+    symbols:
+    - currency: ''
+      symbol: ''
+    buy: ''
+  global_etf:
+    allocation: 10
+    symbols:
+    - currency: ''
+      symbol: ''
+    buy: ''
+  ind_stocks:
+    allocation: 5
+    symbols:
+    - currency: ''
+      symbol: ''
+    buy: ''
+  na_etf:
+    allocation: 25
+    symbols:
+    - currency: ''
+      symbol: ''
+    buy: ''
+auth:
+  refresh_token: your_refresh_token_here
+  
+  
