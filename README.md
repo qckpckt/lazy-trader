@@ -47,12 +47,19 @@ Follow these steps first:
 
 To run the code, once you have set up `config.yaml`:
 
-```
-python app/main.py
-```
+- Set up your mail account.
+  - It's easiest to create a gmail account.
+  - Follow [this guide](https://blog.macuyiko.com/post/2016/how-to-send-html-mails-with-oauth2-and-gmail-in-python.html) to create an API project for your gmail account. This is also where the code in `mail.py` comes from.
+    NOTE - the "other" application type is now called "Desktop App".
+  - create a `.env` file, add the id and secret on a new line each with the format `export GOOGLE_CLIENT_{ID | SECRET}={value}`
+  - `python app/mail.py`
+    - this will prompt you to authorize the app - you will have created a public app in test mode, and you'll have added your own email only to it so you can safely acknowledge that your app is not approved by google.
+    - Following the prompts will generate a refresh token. Add this to the `.env` file using the same format.
+  - in the ifmain block, replace the `___@gmail.com` with the to and from emails you will be using.
+  - run `python app/mail.py` again -- this time you should get an email at the to address from the from address.
+- Now you should be ready to run the actual app: `python app/main.py`.
 
 ## TODO
 - dockerize project
 - create makefile
 - make it easy to set up auto scheduling with a cronjob
-- add method that emails results instead of pprint.

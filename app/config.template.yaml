@@ -37,5 +37,8 @@ allocation_map:
     buy: ''
 auth:
   refresh_token: your_refresh_token_here
+mail:
+  source_account: ___@gmail.com
+  dest_account: ___@gmail.com
   
   
