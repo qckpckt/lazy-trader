@@ -17,7 +17,7 @@ class LazyTrader:
 
         with open("app/config.yaml", "r") as configfile:
             self.config = yaml.safe_load(configfile)
-            self.refresh_token = self.config["auth"]["refresh_token"]
+            self.refresh_token = self.config["auth"]["questrade"]["refresh_token"]
             self.allocation_map = self.config["allocation_map"]
 
         self.refresh_token_url = "https://login.questrade.com/oauth2/token"
@@ -119,7 +119,7 @@ class LazyTrader:
 
     def save_config(self):
         """Store latest refresh token before exiting."""
-        self.config["auth"]["refresh_token"] = self.refresh_token
+        self.config["auth"]["questrade"]["refresh_token"] = self.refresh_token
         with open("app/config.yaml", "w") as outfile:
             yaml.safe_dump(self.config, outfile)
 

@@ -18,6 +18,7 @@ import urllib.request
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import lxml.html
+import yaml
 
 GOOGLE_ACCOUNTS_BASE_URL = "https://accounts.google.com"
 REDIRECT_URI = "urn:ietf:wg:oauth:2.0:oob"
@@ -74,11 +75,22 @@ def call_authorize_tokens(client_id, client_secret, authorization_code):
     return json.loads(response)
 
 
+def fetch_creds_from_config() -> dict:
+    with open("app/config.yaml", "r") as infile:
+        config = yaml.safe_load(infile)
+    return config["auth"]["google"]
+
+
 def call_refresh_token(client_id, client_secret, refresh_token):
-    params = {}
-    params["client_id"] = client_id
-    params["client_secret"] = client_secret
-    params["refresh_token"] = refresh_token
+    if all([i is not None for i in locals().values()]):
+        print("creds retrieved from env.")
+        params = {}
+        params["client_id"] = client_id
+        params["client_secret"] = client_secret
+        params["refresh_token"] = refresh_token
+    else:
+        print("creds not in env, fetching from config")
+        params = fetch_creds_from_config()
     params["grant_type"] = "refresh_token"
     request_url = command_to_url("o/oauth2/token")
     response = (
@@ -170,8 +182,8 @@ if __name__ == "__main__":
         exit()
 
     send_mail(
-        "___@gmail.com",
-        "___@gmail.com",
+        "lazytraderbot5000@gmail.com",
+        "qckpckt@gmail.com",
         "A mail from you from Python",
         "<b>A mail from you from Python</b><br><br>" + "So happy to hear from you!",
     )

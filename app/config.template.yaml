@@ -36,7 +36,12 @@ allocation_map:
       symbol: ''
     buy: ''
 auth:
-  refresh_token: your_refresh_token_here
+  questrade:
+    refresh_token: your_refresh_token_here
+  google:
+    client_id: id_here
+    client_secret: secret_here
+    refresh_token: refresh_token_here
 mail:
   source_account: ___@gmail.com
   dest_account: ___@gmail.com
